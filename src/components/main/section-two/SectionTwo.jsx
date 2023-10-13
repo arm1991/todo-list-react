@@ -1,16 +1,14 @@
-// import { useState } from "react"
-import "./SectionTwo.css"
+import "./SectionTwo.css";
 import Todo from "./todo/Todo";
 
-
-const SectionTwo = ({ store }) => {
-    return (
-        <section className="section-two">
-            {store.map((todo) => (
-                <Todo key={todo.id} title={todo.title} />
-            ))}
-        </section>
-    );
-}
+const SectionTwo = ({ store, deleteTodo, markAsDoneTodo }) => {
+  return (
+    <section className="section-two">
+      {store.map((todo) => (
+        <Todo todo={todo} deleteTodo={deleteTodo} markAsDoneTodo={markAsDoneTodo} />
+      ))}
+    </section>
+  );
+};
 
 export default SectionTwo;

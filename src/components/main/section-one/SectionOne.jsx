@@ -13,7 +13,6 @@ const SectionOne = ({ onAddItem }) => {;
                 isEdited: false
             });
         setInput("");
-        console.log(input);
     }
 
     return (
