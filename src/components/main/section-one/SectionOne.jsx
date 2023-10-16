@@ -11,7 +11,7 @@ const SectionOne = ({ onAddItem }) => {
       done: false,
       isEditing: false,
     });
-    setInput("");
+    setInput(() => "");
   };
 
   return (
@@ -21,13 +21,13 @@ const SectionOne = ({ onAddItem }) => {
         placeholder="Arman's To Do List"
         id="to-do-list-body-header-input"
         value={input}
-        onChange={(e) => setInput(e.target.value)}
+        onChange={(e) => setInput(() => e.target.value)}
         className="todo-input input"
       />
       <button
         id="save"
         className="text to-do-list-body-header-button"
-        onClick={saveEvent}
+        onClick={() => saveEvent()}
       >
         save
       </button>

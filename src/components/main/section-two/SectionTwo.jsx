@@ -11,7 +11,8 @@ const SectionTwo = ({
 }) => {
   return (
     <section className="section-two">
-      {store.map((todo) =>
+      {
+      store.map((todo) => 
         !hideDone || !todo.done ? (
           <Todo
             todo={todo}

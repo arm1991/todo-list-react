@@ -7,42 +7,44 @@ const Main = ({ hideDone }) => {
   const [store, setStore] = useState([]);
 
   const addItemToStore = (newItem) => {
-    setStore([...store, newItem]);
+    setStore((prev) => [...prev, newItem]);
   };
 
   const deleteTodo = (id) => {
-    const filteredStore = store.filter((todo) => todo.id !== id);
-    setStore(filteredStore);
+    setStore((prev) => prev.filter((todo) => todo.id !== id));
   };
 
-  const editTodo = (id, input) => {
-    const updatedStore = store.map((todo) => {
-      if (todo.id === id) {
-        return { ...todo, isEditing: !todo.isEditing, title: input };
-      }
-      return todo;
+  const editTodo = (id, input) => { 
+    setStore((prev) => {
+      return prev.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, isEditing: !todo.isEditing, title: input };
+        }
+        return todo;
+      });
     });
-    setStore(updatedStore);
   };
 
   const editingTodo = (id) => {
-    const updatedStore = store.map((todo) => {
-      if (todo.id === id) {
-        return { ...todo, isEditing: !todo.isEditing };
-      }
-      return todo;
+    setStore((prev) => {
+      return prev.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, isEditing: !todo.isEditing };
+        }
+        return todo;
+      });
     });
-    setStore(updatedStore);
   };
 
   const markAsDoneTodo = (id) => {
-    const updatedStore = store.map((todo) => {
-      if (todo.id === id) {
-        return { ...todo, done: !todo.done };
-      }
-      return todo;
+    setStore((prev) => {
+      return prev.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, done: !todo.done };
+        }
+        return todo;
+      });
     });
-    setStore(updatedStore);
   };
 
   return (

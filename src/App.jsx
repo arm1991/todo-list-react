@@ -6,7 +6,7 @@ function App() {
   const [hideDone, setHideDone] = useState(false);
 
   const changeHideDone = () => {
-    setHideDone(!hideDone);
+    setHideDone(() => !hideDone);
   };
   return (
     <>

@@ -7,21 +7,20 @@ import { useState } from "react";
 const Todo = ({ todo, deleteTodo, editingTodo, editTodo, markAsDoneTodo }) => {
   let [input, setInput] = useState(todo.title);
 
-  const saveEvent = () => {
-    editTodo(todo.id, input);
-    setInput("");
+  const saveEvent = (id) => {
+    editTodo(id, input);
   };
 
-  const deleteItem = () => {
-    deleteTodo(todo.id);
+  const deleteItem = (id) => {
+    deleteTodo(id);
   };
 
-  const markAsDoneItem = () => {
-    markAsDoneTodo(todo.id);
+  const markAsDoneItem = (id) => {
+    markAsDoneTodo(id);
   };
 
-  const editItem = () => {
-    editingTodo(todo.id);
+  const editItem = (id) => {
+    editingTodo(id);
   };
 
   return (
@@ -30,11 +29,11 @@ const Todo = ({ todo, deleteTodo, editingTodo, editTodo, markAsDoneTodo }) => {
         <>
           <h4 className={todo.done ? "done" : ""}>{todo.title}</h4>
           <div className="images">
-            <img src={deleteImg} onClick={deleteItem} alt="delete" />
-            <img src={editImg} onClick={editItem} alt="edit" />
+            <img src={deleteImg} onClick={() => deleteItem(todo.id)} alt="delete" />
+            <img src={editImg} onClick={() => editItem(todo.id)} alt="edit" />
             <img
               src={markAsDoneImg}
-              onClick={markAsDoneItem}
+              onClick={() => markAsDoneItem(todo.id)}
               alt="mark as done"
             />
           </div>
@@ -45,9 +44,9 @@ const Todo = ({ todo, deleteTodo, editingTodo, editTodo, markAsDoneTodo }) => {
             className="editing-input"
             type="text"
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => setInput(() => e.target.value)}
           />
-          <button className="editing-save" onClick={saveEvent}>
+          <button className="editing-save" onClick={() => saveEvent(todo.id)}>
             save
           </button>
         </>
