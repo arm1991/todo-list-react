@@ -24,7 +24,7 @@ const Todo = ({ todo, deleteTodo, editingTodo, editTodo, markAsDoneTodo }) => {
   };
 
   return (
-    <div key={todo.id.toString()} className="lists">
+    <div className="lists">
       {!todo.isEditing ? (
         <>
           <h4 className={todo.done ? "done" : ""}>{todo.title}</h4>
