@@ -15,6 +15,7 @@ const SectionTwo = ({
       store.map((todo) => 
         !hideDone || !todo.done ? (
           <Todo
+            key={todo.id.toString()} 
             todo={todo}
             deleteTodo={deleteTodo}
             editingTodo={editingTodo}
