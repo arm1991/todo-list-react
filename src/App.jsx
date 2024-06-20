@@ -8,9 +8,10 @@ function App() {
   const changeHideDone = () => {
     setHideDone(() => !hideDone);
   };
+  
   return (
     <>
-      <Header changeHideDone={changeHideDone} />
+      <Header changeHideDone={changeHideDone} hideDone={hideDone} />
       <Main hideDone={hideDone} />
     </>
   );
